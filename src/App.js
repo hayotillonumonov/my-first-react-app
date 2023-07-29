@@ -1,19 +1,22 @@
 import './App.css';
+import { useState } from 'react';
 
 function App() {
-
-  let name = 'Hayotillo'
-  
+  const [name, setName] = useState('Hayotillo')
+  const [lang, setlang] = useState('My name is')
 
   const handleClick = ()=>{
-    name = 'Doniyor'
-    console.log(name);
+    setName('Doniyor')
   }
 
+  const handleClicklang = ()=>{
+    setlang('Mening ismim')
+  }
   return (
     <div className="App">
-     <h1>My name is {name}</h1>
+     <h1>{lang}: {name}</h1>
      <button onClick={handleClick}>Change name</button>
+     <button onClick={handleClicklang}>Change language</button>
     </div>
   );
 }
