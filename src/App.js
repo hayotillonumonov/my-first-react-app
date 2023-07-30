@@ -1,5 +1,5 @@
   import './App.css';
-  import { useState } from 'react';
+  import { useState, Fragment } from 'react';
   import Title from './components/title';
 
 function App() {
@@ -24,6 +24,9 @@ function App() {
   return (
     <div className="App">
       <Title title="Hayotillo's Kingdim Events" subtitle="All events will be here"/>
+      <br/>
+      <Title title="Islombek's Kingdim Events" subtitle="All events will be here"/>
+      <br/>
      {showcontent && <button onClick={() => setShowContent(false)}>Hide Content</button>}
      {!showcontent && <button onClick={() => setShowContent(true)}>Show Content</button>}
 
@@ -32,10 +35,10 @@ function App() {
       {
         events.map((event) => {
           return (
-            <div key={event.id}>
+            <Fragment key={event.id}>
               <h2>{event.title}</h2>
               <button onClick={()=>handleDelete(event.id)}>Delete</button>
-            </div>
+            </Fragment>
           )
          })
       }
