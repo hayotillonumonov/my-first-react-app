@@ -1,10 +1,11 @@
-const title = ()=>{
+const Title = ({title, subtitle})=>{
     return (
         <div>
-            <h1 className="title">Hayotillo's Kingdim Events</h1>
-            <p className="subtitle">All events will be here</p>
+            <h1 className="title">{title}</h1>
+            <br/>
+            <p className="subtitle">{subtitle}</p>
         </div>
     )
 }
 
-export default title
+export default Title

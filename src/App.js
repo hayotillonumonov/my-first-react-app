@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div className="App">
-      <Title/>
+      <Title title="Hayotillo's Kingdim Events" subtitle="All events will be here"/>
      {showcontent && <button onClick={() => setShowContent(false)}>Hide Content</button>}
      {!showcontent && <button onClick={() => setShowContent(true)}>Show Content</button>}
 
