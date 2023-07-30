@@ -23,11 +23,7 @@ function App() {
 
   return (
     <div className="App">
-<<<<<<< HEAD
       <Title title="Hayotillo's Kingdim Events" subtitle="All events will be here"/>
-=======
-      <Title/>
->>>>>>> d60859c7757a333c2e9f51d86fa410bba11da3f7
      {showcontent && <button onClick={() => setShowContent(false)}>Hide Content</button>}
      {!showcontent && <button onClick={() => setShowContent(true)}>Show Content</button>}
 
