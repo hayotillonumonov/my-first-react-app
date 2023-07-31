@@ -1,13 +1,15 @@
 // style
 import "./Modal.css"
 
-function Modal(props) {
-  console.log(props);
+function Modal({children, closeModal}) {
+
   return (
      
     <div className="modal-backdrop">
         <div className="modal">
-           {props.children}
+           {children}
+           <br />
+           <button onClick={closeModal}>Close</button>
         </div>
     </div>
   )

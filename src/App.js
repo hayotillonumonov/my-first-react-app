@@ -4,6 +4,7 @@ import Title from './components/title';
 import Modal from './components/Modal';
 
 function App() {
+  const [showModal, setShowModal] = useState(false)
   const [showcontent, setShowContent] = useState(true)
   const [events, setEvents] = useState([
     { title: "akhror's birthday party", id: 1 },
@@ -20,6 +21,12 @@ function App() {
         return event.id !== id
       })
     })
+  }
+
+  // toggle modal function
+
+  const closeModal = ()=>{
+    setShowModal(false)
   }
 
   return (
@@ -46,11 +53,14 @@ function App() {
       </div>}
 
 
-      <Modal>
+      {showModal && <Modal closeModal={closeModal}>
           <h2>Hayotillo Numonov </h2>
           <br />
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est, corrupti.</p>
-        </Modal>
+        </Modal>}
+        <br />
+        <br />
+        {!showModal && <button onClick={()=>setShowModal(true)}>Show modal</button>}
     </div>
   );
 }
