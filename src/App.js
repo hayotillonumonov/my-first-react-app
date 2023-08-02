@@ -51,7 +51,7 @@ function App() {
       {showcontent && <Eventlist events={events} handleDelete={handleDelete} />}
 
       {showModal && (
-        <Modal closeModal={closeModal}>
+        <Modal closeModal={closeModal} isModeModal={true}>
           <h2>Hayotillo Numonov </h2>
           <br />
           <p>
