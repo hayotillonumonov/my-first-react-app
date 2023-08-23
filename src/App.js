@@ -8,11 +8,14 @@ import NewEventForm from "./components/NewEventForm";
 function App() {
   const [showModal, setShowModal] = useState(false);
   const [showcontent, setShowContent] = useState(true);
-  const [events, setEvents] = useState([
-    { title: "akhror's birthday party", id: 1 },
-    { title: "doniyor's live stream", id: 2 },
-    { title: "match: manchester united vs barcelona", id: 3 },
-  ]);
+  const [events, setEvents] = useState([]);
+
+  const newEvent = (event) => {
+    setEvents((prev) =>{
+      return [...prev, event]
+    })
+    setShowModal(false)
+  }
 
   //Delete items
 
@@ -22,12 +25,6 @@ function App() {
         return event.id !== id;
       });
     });
-  };
-
-  // toggle modal function
-
-  const closeModal = () => {
-    setShowModal(false);
   };
 
   return (
@@ -52,8 +49,8 @@ function App() {
       {showcontent && <Eventlist events={events} handleDelete={handleDelete} />}
 
       {showModal && (
-        <Modal closeModal={closeModal} isModeModal={true}>
-          <NewEventForm/>
+        <Modal>
+          <NewEventForm newEvent={newEvent}/>
         </Modal>
       )}
       <br />

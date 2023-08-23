@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import { v4 as uuidv4} from "uuid";
 
-function NewEventForm() {
+function NewEventForm({newEvent}) {
   const [title, settitle] = useState("");
   const [date, setdate] = useState("");
   const resetInputs = ()=>{
@@ -22,7 +22,7 @@ function NewEventForm() {
       id: uuidv4()
     }
 
-    console.log(event)
+    newEvent(event)
 
     resetInputs()
   }
