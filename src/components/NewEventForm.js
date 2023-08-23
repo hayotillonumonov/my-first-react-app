@@ -3,6 +3,8 @@ import "./NewEventForm.css";
 
 import { useState } from "react";
 
+import { v4 as uuidv4} from "uuid";
+
 function NewEventForm() {
   const [title, settitle] = useState("");
   const [date, setdate] = useState("");
@@ -10,8 +12,22 @@ function NewEventForm() {
     settitle('')
     setdate('')
   }
-  return (
-    <form className="new-event-form">
+
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+
+    const event ={
+      title: title,
+      date: date,
+      id: uuidv4()
+    }
+
+    console.log(event)
+
+    resetInputs()
+  }
+    return (
+    <form className="new-event-form" onSubmit={handleSubmit}>
       <label>
         <span>Event title:</span>
         <input type="text" onChange={(e) => settitle(e.target.value)} value={title} />
@@ -20,13 +36,7 @@ function NewEventForm() {
         <span>Event Date:</span>
         <input type="date" onChange={(e) => setdate(e.target.value)} value={date}/>
       </label>
-      <button type="button" onClick={resetInputs}>Reset inputs</button>
-      <br />
-      <br />
       <button>Submit</button>
-      <hr />
-      <p>Title: {title}</p>
-      <p>Date: {date}</p>
     </form>
   );
 }
