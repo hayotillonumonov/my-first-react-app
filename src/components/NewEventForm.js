@@ -1,56 +1,47 @@
 // Style
 import "./NewEventForm.css";
-
-import { useState } from "react";
+import { useRef } from "react";
+// import { useState } from "react";
 
 import { v4 as uuidv4 } from "uuid";
 
 function NewEventForm({ newEvent }) {
-  const [title, settitle] = useState("");
-  const [date, setdate] = useState("");
-  const [location, setlocation] = useState("andijon");
-  console.log(location);
+  const title = useRef();
+  const date = useRef();
+  const location = useRef();
+  const form = useRef();
+  // const [title, settitle] = useState("");
+  // const [date, setdate] = useState("");
+  // const [location, setlocation] = useState("andijon");
 
   const resetInputs = () => {
-    settitle("");
-    setdate("");
+    form.current.reset();
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const event = {
-      title: title,
-      date: date,
-      location: location,
+      title: title.current.value,
+      date: date.current.value,
+      location: location.current.value,
       id: uuidv4(),
     };
-
     newEvent(event);
-
     resetInputs();
   };
   return (
-    <form className="new-event-form" onSubmit={handleSubmit}>
+    <form ref={form} className="new-event-form" onSubmit={handleSubmit}>
       <label>
         <span>Event title:</span>
-        <input
-          type="text"
-          onChange={(e) => settitle(e.target.value)}
-          value={title}
-        />
+        <input type="text" ref={title} />
       </label>
       <label>
         <span>Event Date:</span>
-        <input
-          type="date"
-          onChange={(e) => setdate(e.target.value)}
-          value={date}
-        />
+        <input type="date" ref={date} />
       </label>
       <label>
         <span>Event Location: </span>
-        <select onChange={(e) => setlocation(e.target.value)}>
+        <select ref={location}>
           <option value="andijon">Andijon</option>
           <option value="fergana">Farg'ona</option>
           <option value="tashkent">Toshkent</option>
